@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ReportRepository extends JpaRepository<Report, Long> {
 
-    @Query(value = "SELECT pg_sleep(:seconds)")
-    void sleep(int seconds);
+    @Query(value = "SELECT sleep(:milliSeconds)")
+    void sleep(int milliSeconds);
 }

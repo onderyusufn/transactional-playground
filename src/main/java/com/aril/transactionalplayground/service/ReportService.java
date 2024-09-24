@@ -1,7 +1,7 @@
 package com.aril.transactionalplayground.service;
 
-import com.aril.transactionalplayground.NoRollbackException;
-import com.aril.transactionalplayground.RollbackException;
+import com.aril.transactionalplayground.exception.NoRollbackException;
+import com.aril.transactionalplayground.exception.RollbackException;
 import com.aril.transactionalplayground.model.Report;
 import com.aril.transactionalplayground.repository.ReportRepository;
 import lombok.RequiredArgsConstructor;
@@ -33,12 +33,12 @@ public class ReportService {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, timeout = 4)
     public void timeoutDontEffectOrderService() {
-        reportRepository.sleep(6);
+        reportRepository.sleep(6000);
     }
 
     @Transactional(timeout = 8)
     public void timeoutEffectOrderService() {
-        reportRepository.sleep(6);
+        reportRepository.sleep(6000);
     }
 
     @Transactional
