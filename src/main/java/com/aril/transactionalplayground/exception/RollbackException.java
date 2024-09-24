@@ -1,4 +1,4 @@
-package com.aril.transactionalplayground;
+package com.aril.transactionalplayground.exception;
 
 /**
  * Exception that will trigger rollback

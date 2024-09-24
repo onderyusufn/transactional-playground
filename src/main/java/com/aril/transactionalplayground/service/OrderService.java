@@ -16,6 +16,14 @@ public class OrderService {
     private final LogService logService;
     private final ReportService reportService;
 
+    private static Order getOrder() {
+        Order order = new Order();
+        order.setCustomerName("John Doe");
+        order.setAmount(100.0);
+        order.setStatus(Order.OrderStatus.PENDING);
+        return order;
+    }
+
     @Transactional(timeout = 3)
     public void createOrder() {
         Order order = getOrder();
@@ -34,13 +42,5 @@ public class OrderService {
 
         reportService.createReport(save.getStatus().name());
         log.info("Order created");
-    }
-
-    private static Order getOrder() {
-        Order order = new Order();
-        order.setCustomerName("John Doe");
-        order.setAmount(100.0);
-        order.setStatus(Order.OrderStatus.PENDING);
-        return order;
     }
 }

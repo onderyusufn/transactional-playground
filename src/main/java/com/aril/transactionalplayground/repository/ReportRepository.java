@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ReportRepository extends JpaRepository<Report, Long> {
 
-    @Query(value = "SELECT pg_sleep(:seconds)")
-    void sleep(int seconds);
+    // this sleep method is used to simulate a long-running query for transactional timeout testing
+    @Query(value = "SELECT sleep(:milliSeconds)")
+    void sleep(int milliSeconds);
 }
